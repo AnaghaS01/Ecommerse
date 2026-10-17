@@ -37,8 +37,8 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="#"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
+            <li><a href="{% url 'cart:wishlist' %}"><span class="icon_heart_alt"></span>
+                <div class="tip">{{w_count}}</div>
             </a></li>
             <li><a href="#"><span class="icon_bag_alt"></span>
                 <div class="tip">2</div>
@@ -112,8 +112,8 @@
                     <div class="header__right">
                         <ul class="header__right__widget">
                             <li><a name="q" href="{% url 'search:search' %}"><span class="icon_search search-switch"></span></a></li>
-                            <li><a href="#"><span class="icon_heart_alt"></span>
-                                <div class="tip">2</div>
+                            <li><a href="{% url 'cart:wishlist' %}"><span class="icon_heart_alt"></span>
+                                <div class="tip">{{w_count}}</div>
                             </a></li>
 
                         </ul>
@@ -167,7 +167,7 @@
                         <li><a href="#">My Account</a></li>
                         <li><a href="#">Orders Tracking</a></li>
                         <li><a href="#">Checkout</a></li>
-                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="{% url 'cart:wishlist' %}">Wishlist</a></li>
                     </ul>
                 </div>
             </div>

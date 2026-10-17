@@ -17,6 +17,10 @@
             <div class="col-lg-4 col-md-4 col-sm-6 mix women">
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="{{i.image.url}}">
+                        <ul class="product__hover">
+                            <li><a href="{% url 'cart:addtowishlist' i.id %}" title="Add to Wishlist"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="{% url 'cart:addtocart' i.id %}" title="Add to Cart"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
                     </div>
                     <div class="product__item__text">
                         <h3>{{i.name}}</h3>

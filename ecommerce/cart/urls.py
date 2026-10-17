@@ -28,6 +28,7 @@ urlpatterns = [
   path('orderform',views.orderform,name="orderform"),
   path('paymentstatus/<u>',views.paymentstatus,name="paymentstatus"),
   path('orderview',views.orderview,name="orderview"),
-
-
+  path('wishlist',views.wishlistview,name="wishlist"),
+  path('addtowishlist/<int:i>',views.addtowishlist,name="addtowishlist"),
+  path('wishlistdelete/<int:i>',views.wishlistdelete,name="wishlistdelete"),
 ]

@@ -28,9 +28,11 @@
 
         {% else %}
         {% if product.stock > 0 %}
-        <a href="" class="btn btn-secondary fw-bold mt-3 mb-2 text-center">ADD TO CART</a>
+        <a href="{% url 'cart:addtocart' product.id %}" class="btn btn-secondary fw-bold mt-3 mb-2 text-center">ADD TO CART</a>
+        <a href="{% url 'cart:addtowishlist' product.id %}" class="btn btn-outline-danger fw-bold mt-3 mb-2 text-center"><i class="fa fa-heart"></i> ADD TO WISHLIST</a>
         {% else %}
         <h5>Out of stock</h5>
+        <a href="{% url 'cart:addtowishlist' product.id %}" class="btn btn-outline-danger fw-bold mt-3 mb-2 text-center"><i class="fa fa-heart"></i> ADD TO WISHLIST</a>
         {% endif %}
 
         {% endif %}
