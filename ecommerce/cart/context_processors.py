@@ -17,7 +17,7 @@ def count_items(request):
     else:
         session_wishlist = request.session.get('wishlist', None)
         if session_wishlist is None:
-            w_count = 1  # Pre-loaded 1 handbag
+            w_count = 2  # Pre-loaded 2 items (Handbag & Sandals)
         else:
             w_count = len(session_wishlist)
     return {'c': count, 'w_count': w_count}

@@ -160,22 +160,15 @@ def addtowishlist(request, i):
 def wishlistview(request):
     if request.user.is_authenticated:
         w = list(Wishlist.objects.filter(user=request.user))
-        # If logged-in user has 0 items, ensure the handbag is present as requested
-        if not w:
-            handbag = Product.objects.filter(name='Leather Tote').first() or Product.objects.filter(category__name='Handbags').first()
-            if handbag:
-                item, _ = Wishlist.objects.get_or_create(user=request.user, product=handbag)
-                w = [item]
     else:
         session_wishlist = request.session.get('wishlist', None)
-        if session_wishlist is None:
-            handbag = Product.objects.filter(name='Leather Tote').first() or Product.objects.filter(category__name='Handbags').first()
-            if handbag:
-                session_wishlist = [handbag.id]
-                request.session['wishlist'] = session_wishlist
-                request.session.modified = True
-            else:
-                session_wishlist = []
+        if session_wishlist is None or len(session_wishlist) < 2:
+            p1 = Product.objects.filter(name='Leather Tote').first()
+            p2 = Product.objects.filter(name='Strappy Block Heel').first()
+            default_ids = [p.id for p in [p1, p2] if p]
+            session_wishlist = default_ids
+            request.session['wishlist'] = session_wishlist
+            request.session.modified = True
         prods = Product.objects.filter(id__in=session_wishlist)
         w = [type('WishlistItem', (), {'product': p})() for p in prods]
 
